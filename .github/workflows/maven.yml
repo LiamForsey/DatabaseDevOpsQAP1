@@ -1,0 +1,32 @@
+# This maven.yml file will create a java specific project with mave, also this file will cache or restore any dependencies to improve workflow
+
+
+name: Java CI with Maven
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Compile and Build
+        run: mvn -B package --file pom.xml
+
+
