@@ -28,5 +28,3 @@ jobs:
 
       - name: Compile and Build
         run: mvn -B package --file pom.xml
-
-
